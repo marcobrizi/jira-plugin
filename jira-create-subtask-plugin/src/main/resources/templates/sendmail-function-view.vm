@@ -1,0 +1,7 @@
+A notification email will be sent to the <b>Issue Assignee</b>, the <b>Issue Reporter</b>
+#if ($individualEmails.length() > 0)
+, the "<b>${individualEmails}</b>" user(s)
+#end
+#if ($groupEmails.length() > 0)
+, the "<b>${groupEmails}</b>" group members
+#end

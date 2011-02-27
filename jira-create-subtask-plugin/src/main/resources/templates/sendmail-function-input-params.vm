@@ -1,0 +1,18 @@
+<tr bgcolor=ffffff>
+    <td align="right" valign="top" bgcolor="fffff0">
+        <span class="label">Group emails:</span>
+    </td>
+    <td bgcolor="ffffff" nowrap>
+        <input type="text" name="groupEmails" value=""/>
+        <br><font size="1">Comma-separated list of JIRA groups to send emails to.</font>
+    </td>
+</tr>
+<tr bgcolor=ffffff>
+    <td align="right" valign="top" bgcolor="fffff0">
+        <span class="label">Individual emails:</span>
+    </td>
+    <td bgcolor="ffffff" nowrap>
+        <input type="text" name="individualEmails" value=""/>
+        <br><font size="1">Comma-separated list of JIRA users to send emails to.</font>
+    </td>
+</tr>

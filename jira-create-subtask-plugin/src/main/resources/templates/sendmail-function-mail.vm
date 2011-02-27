@@ -1,0 +1,7 @@
+A transition has been made in the following issue:
+
+     [ ${baseurl}/browse/${issue.getString("key")}?page=history ]
+
+#parse("templates/email/text/includes/issuesummary.vm")
+
+#parse("templates/email/text/includes/footer.vm")

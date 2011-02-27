@@ -1,0 +1,175 @@
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Type:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	<select name="subIssueTypeId">
+    	#foreach($subIssueType in $subIssueTypes)
+    		#if($currentSubIssueTypeId && $currentSubIssueTypeId==$subIssueType.getId())
+		        <option selected="selected" value="$subIssueType.getId()">$subIssueType.getName()</option>
+		    #else
+			    <option value="$subIssueType.getId()">$subIssueType.getName()</option>
+		    #end
+        #end
+        </select>
+    </td>
+</tr>
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Priority:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	<select name="subIssuePriorityId">
+    	#if($currentSubIssuePriorityId && $currentSubIssuePriorityId=="0")
+			<option selected="selected" value="0">Parent's</option>
+    	#else
+			<option value="0">Parent's</option>
+    	#end
+    	#foreach($subIssuePri in $subIssuePriorities)
+    		#if($currentSubIssuePriorityId && $currentSubIssuePriorityId==$subIssuePri.getId())
+		        <option selected="selected" value="$subIssuePri.getId()">$subIssuePri.getName()</option>
+		    #else
+			    <option value="$subIssuePri.getId()">$subIssuePri.getName()</option>
+		    #end
+        #end
+        </select>
+    </td>
+</tr>
+
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Assignee:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	<select id="subIssueAssignTo" name="subIssueAssignTo" onchange="controlFieldVisibility();">
+    	#foreach($subIssueAss in $subIssueAssignModes)
+    		#if($currentSubIssueAssigneeField && $currentSubIssueAssigneeField==$subIssueAss.name())
+    			<option value="$subIssueAss.name()" selected="selected">$subIssueAss.getText()</option>
+    		#else 
+    			<option value="$subIssueAss.name()">$subIssueAss.getText()</option>
+    		#end
+    	#end
+    	</select>
+        <br/><font size="1">The assignee for the created subtask</font>
+    </td>
+</tr>
+
+<tr id="subIssueAssigneeFieldRow" bgcolor=#ffffff >
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Assignee User Field:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	<select name="subIssueAssigneeField">
+    	#if($currentSubIssueAssigneeField)
+			<option value="">No Field</option>
+    	#else
+			<option selected="selected" value="">No Field</option>
+    	#end
+    	#foreach($subIssueUsr in $subIssueUserField)
+    		#if($currentSubIssueAssigneeField && $currentSubIssueAssigneeField==$subIssueUsr.getId())
+    			<option selected="selected" value="$subIssueUsr.getId()">$subIssueUsr.getName()</option>
+    		#else
+	        	<option value="$subIssueUsr.getId()">$subIssueUsr.getName()</option>
+	        #end
+        #end
+        </select>
+    </td>
+</tr>
+
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Overview:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	#if($currentSubIssueOverview)
+	        <input type="text" name="subIssueOverview" value="$currentSubIssueOverview"/>
+    	#else
+    		<input type="text" name="subIssueOverview"/>
+    	#end
+        <br><font size="1">The overview field of the sub-task to create.</font>
+    </td>
+</tr>
+
+<tr bgcolor="#ffffff">
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Inherit Version</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+        #if ($currentSubIssueInheritVersion)
+        	<input type="checkbox" name="subIssueInheritVersion" value="subIssueInheritVersion" checked="checked" />
+ 		#else 
+ 			<input type="checkbox" name="subIssueInheritVersion" value="subIssueInheritVersion" />
+        #end
+        <br><font size="1">Inherit Affected-Version and Fix-Version from parent issue.</font>
+    </td>
+</tr>
+
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Estimate Field:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+    	<select name="subIssueEstimateField">
+    	#if($currentSubIssueEstimateField)
+			<option value="">No Field</option>
+    	#else
+			<option selected="selected" value="">No Field</option>
+    	#end
+    	#foreach($subIssueTxt in $subIssueTextField)
+    		#if($currentSubIssueEstimateField && $currentSubIssueEstimateField==$subIssueTxt.getId())
+    			<option selected="selected" value="$subIssueTxt.getId()">$subIssueTxt.getName()</option>
+    		#else
+	        	<option value="$subIssueTxt.getId()">$subIssueTxt.getName()</option>
+	        #end
+        #end
+        </select>
+    </td>
+</tr>
+
+<tr bgcolor=#ffffff>
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Description:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+        #if($currentSubIssueDescription)
+	        <textarea rows="8" cols="80" name="subIssueDescription">$currentSubIssueDescription</textarea>
+	    #else
+        	<textarea rows="8" cols="80" name="subIssueDescription"></textarea>
+        #end
+        <br><font size="1">The description field of the sub-teask to create.</font>
+    </td>
+</tr>
+
+<tr bgcolor="#ffffff">
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Sub-Task Exists Condition</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap="">
+        #if ($currentSubIssueExistsCondition)
+        	<input type="checkbox" name="subIssueExistsCondition" value="subIssueExistsCondition" checked="checked" />
+ 		#else 
+ 			<input type="checkbox" name="subIssueExistsCondition" value="subIssueExistsCondition" />
+        #end
+        <br><font size="1">Do not create sub-task if another sub-task already exists</font>
+    </td>
+</tr>
+
+
+<script language="JavaScript">
+
+	function controlFieldVisibility() {
+    
+    	var subIssueAssignTo = document.getElementById("subIssueAssignTo");
+    	var subIssueAssigneeFieldRow = document.getElementById("subIssueAssigneeFieldRow");
+    
+    	if (subIssueAssignTo.value == "ASSIGN_TO_USER_FIELD") {
+			subIssueAssigneeFieldRow.style.display="";
+    	}
+    	else {
+			subIssueAssigneeFieldRow.style.display="none";
+    	}
+	}
+
+	controlFieldVisibility();
+	
+</script>

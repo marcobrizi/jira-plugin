@@ -1,0 +1,1 @@
+A Sub-Issue of type <b>${subIssueTypeName}</b> will be created and assigned to <b>${subIssueAssignToName}</b>: <i>${subIssueOverview}</i>
